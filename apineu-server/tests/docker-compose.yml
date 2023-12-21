@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+  mysql:
+    container_name: apineu-test-mysql
+    image: mariadb
+    volumes:
+      - apineu-test-mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: apineu-test
+    ports:
+      - '23306:3306'
+
+volumes:
+  apineu-test-mysql:
+    driver: local

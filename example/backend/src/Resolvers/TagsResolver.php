@@ -2,15 +2,15 @@
 
 namespace Backend\Resolvers;
 
-use Afeefa\ApiResources\Api\ApiRequest;
-use Afeefa\ApiResources\Model\Model;
-use Afeefa\ApiResources\Model\ModelInterface;
-use Afeefa\ApiResources\Resolver\ActionResult;
-use Afeefa\ApiResources\Resolver\QueryActionResolver;
-use Afeefa\ApiResources\Resolver\QueryRelationResolver;
 use Backend\Types\TagType;
 use Closure;
 use Medoo\Medoo;
+use Neuedev\Apineu\Api\ApiRequest;
+use Neuedev\Apineu\Model\Model;
+use Neuedev\Apineu\Model\ModelInterface;
+use Neuedev\Apineu\Resolver\ActionResult;
+use Neuedev\Apineu\Resolver\QueryActionResolver;
+use Neuedev\Apineu\Resolver\QueryRelationResolver;
 
 class TagsResolver
 {

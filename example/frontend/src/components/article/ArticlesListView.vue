@@ -83,7 +83,7 @@
 
 <script>
 import { Component, Vue } from 'vue-property-decorator'
-import { ListViewConfig } from '@afeefa/api-resources-client'
+import { ListViewConfig } from '@neuedev/apineu-client'
 
 export function getListViewConfig (authorId) {
   return new ListViewConfig()

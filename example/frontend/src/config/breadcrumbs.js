@@ -1,4 +1,4 @@
-import { apiResources } from '@afeefa/api-resources-client'
+import { apiResources } from '@neuedev/apineu-client'
 
 export function breadcrumbs ({BREADCRUMB, BREADCRUMBSET}) {
   return [

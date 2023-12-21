@@ -13,7 +13,7 @@
       "request": "launch",
       "port": 9000,
       "pathMappings": {
-        "/api-resources": "${workspaceFolder}",
+        "/apineu": "${workspaceFolder}",
       }
     }
   ]

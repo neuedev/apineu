@@ -1,0 +1,60 @@
+<?php
+
+namespace Neuedev\Apineu\Test;
+
+use Closure;
+use Neuedev\Apineu\Api\Api;
+use Neuedev\Apineu\Api\ApiRequest;
+use Neuedev\Apineu\Tests\Resolver\TestWatcher;
+
+class QueryTest extends ApiResourcesTest
+{
+    protected TestWatcher $testWatcher;
+
+    protected function setUp(): void
+    {
+        parent::setup();
+
+        $this->testWatcher = new TestWatcher();
+    }
+
+    protected function createApiWithTypeAndAction(Closure $fieldsCallback, $TypeClassOrClassesOrMeta, Closure $actionCallback): Api
+    {
+        return $this->apiBuilder()->api('API', function (Closure $addResource, Closure $addType) use ($fieldsCallback, $TypeClassOrClassesOrMeta, $actionCallback) {
+            $addType('TYPE', $fieldsCallback);
+            $addResource('RES', function (Closure $addAction, Closure $addQuery) use ($TypeClassOrClassesOrMeta, $actionCallback) {
+                $addQuery('ACT', $TypeClassOrClassesOrMeta, $actionCallback);
+            });
+        })->get();
+    }
+
+    protected function createApiWithAction($TypeClassOrClassesOrMeta, Closure $actionCallback): Api
+    {
+        return $this->apiBuilder()->api('API', function (Closure $addResource) use ($TypeClassOrClassesOrMeta, $actionCallback) {
+            $addResource('RES', function (Closure $addAction, Closure $addQuery) use ($TypeClassOrClassesOrMeta, $actionCallback) {
+                $addQuery('ACT', $TypeClassOrClassesOrMeta, $actionCallback);
+            });
+        })->get();
+    }
+
+    protected function request(Api $api, ?array $fields = null, ?array $params = null, ?array $filters = null)
+    {
+        return $api->request(function (ApiRequest $request) use ($fields, $params, $filters) {
+            $request
+                ->resourceType('RES')
+                ->actionName('ACT');
+
+            if ($fields) {
+                $request->fields($fields);
+            }
+
+            if ($params) {
+                $request->params($params);
+            }
+
+            if ($filters) {
+                $request->filters($filters);
+            }
+        });
+    }
+}

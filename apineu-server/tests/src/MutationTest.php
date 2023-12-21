@@ -1,0 +1,92 @@
+<?php
+
+namespace Neuedev\Apineu\Test;
+
+use Closure;
+use Neuedev\Apineu\Action\Action;
+use Neuedev\Apineu\Api\Api;
+use Neuedev\Apineu\Api\ApiRequest;
+use Neuedev\Apineu\Model\Model;
+use Neuedev\Apineu\Model\ModelInterface;
+use Neuedev\Apineu\Resolver\MutationActionModelResolver;
+use Neuedev\Apineu\Tests\Resolver\TestWatcher;
+
+class MutationTest extends ApiResourcesTest
+{
+    protected TestWatcher $testWatcher;
+
+    protected function setUp(): void
+    {
+        parent::setup();
+
+        $this->testWatcher = new TestWatcher();
+    }
+
+    protected function createApiWithUpdateType(Closure $fieldsCallback): Api
+    {
+        return $this->apiBuilder()->api('API', function (Closure $addResource, Closure $addType) use ($fieldsCallback) {
+            $addType('TYPE', $fieldsCallback, $fieldsCallback, $fieldsCallback);
+            $addResource('RES', function (Closure $addAction, Closure $addQuery, Closure $addMutation) {
+                $addMutation('ACT', T('TYPE'), function (Action $action) {
+                    $action
+                        ->resolve(function (MutationActionModelResolver $r) {
+                            $r
+                                ->get(function (string $id, string $typeName) {
+                                    return Model::fromSingle($typeName, ['id' => $id]);
+                                })
+                                ->update(function (ModelInterface $model) {
+                                    return $model;
+                                })
+                                ->add(function () {
+                                    return Model::fromSingle('TYPE', ['id' => '111333']);
+                                })
+                                ->delete(fn () => null);
+                        });
+                });
+            });
+        })->get();
+    }
+
+    protected function createApiWithUpdateTypeAndMutation(Closure $updateFieldsCallback, $TypeClassOrClassesOrMeta, Closure $actionCallback): Api
+    {
+        return $this->apiBuilder()->api('API', function (Closure $addResource, Closure $addType) use ($updateFieldsCallback, $TypeClassOrClassesOrMeta, $actionCallback) {
+            $addType('TYPE', null, $updateFieldsCallback, $updateFieldsCallback);
+            $addResource('RES', function (Closure $addAction, Closure $addQuery, Closure $addMutation) use ($TypeClassOrClassesOrMeta, $actionCallback) {
+                $addMutation('ACT', $TypeClassOrClassesOrMeta, $actionCallback);
+            });
+        })->get();
+    }
+
+    protected function createApiWithUpdateTypeAndAction(Closure $updateFieldsCallback, $TypeClassOrClassesOrMeta, Closure $actionCallback): Api
+    {
+        return $this->apiBuilder()->api('API', function (Closure $addResource, Closure $addType) use ($updateFieldsCallback, $TypeClassOrClassesOrMeta, $actionCallback) {
+            $addType('TYPE', null, $updateFieldsCallback, $updateFieldsCallback);
+            $addResource('RES', function (Closure $addAction, Closure $addQuery, Closure $addMutation) use ($TypeClassOrClassesOrMeta, $actionCallback) {
+                $addAction('ACT', $actionCallback);
+            });
+        })->get();
+    }
+
+    protected function createApiWithMutation($TypeClassOrClassesOrMeta, Closure $actionCallback): Api
+    {
+        return $this->apiBuilder()->api('API', function (Closure $addResource) use ($TypeClassOrClassesOrMeta, $actionCallback) {
+            $addResource('RES', function (Closure $addAction, Closure $addQuery, Closure $addMutation) use ($TypeClassOrClassesOrMeta, $actionCallback) {
+                $addMutation('ACT', $TypeClassOrClassesOrMeta, $actionCallback);
+            });
+        })->get();
+    }
+
+    protected function request(Api $api, $data = 'unset', $params = []): array
+    {
+        return $api->request(function (ApiRequest $request) use ($data, $params) {
+            $request
+                ->resourceType('RES')
+                ->actionName('ACT')
+                ->params($params);
+
+            if ($data !== 'unset') {
+                $request->fieldsToSave($data);
+            }
+        });
+    }
+}

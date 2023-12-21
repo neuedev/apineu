@@ -2,9 +2,9 @@
 
 namespace Backend\Types;
 
-use Afeefa\ApiResources\Field\FieldBag;
-use Afeefa\ApiResources\Field\Fields\IntAttribute;
-use Afeefa\ApiResources\Type\Type;
+use Neuedev\Apineu\Field\FieldBag;
+use Neuedev\Apineu\Field\Fields\IntAttribute;
+use Neuedev\Apineu\Type\Type;
 
 class CountsType extends Type
 {

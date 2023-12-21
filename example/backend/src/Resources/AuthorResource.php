@@ -2,21 +2,21 @@
 
 namespace Backend\Resources;
 
-use Afeefa\ApiResources\Action\Action;
-use Afeefa\ApiResources\Action\ActionBag;
-use Afeefa\ApiResources\Action\ActionParams;
-use Afeefa\ApiResources\Api\ApiRequest;
-use Afeefa\ApiResources\Field\Fields\IdAttribute;
-use Afeefa\ApiResources\Filter\FilterBag;
-use Afeefa\ApiResources\Filter\Filters\KeywordFilter;
-use Afeefa\ApiResources\Filter\Filters\OrderFilter;
-use Afeefa\ApiResources\Filter\Filters\PageFilter;
-use Afeefa\ApiResources\Filter\Filters\PageSizeFilter;
-use Afeefa\ApiResources\Filter\Filters\SelectFilter;
-use Afeefa\ApiResources\Resource\Resource;
-use Afeefa\ApiResources\Type\Type;
 use Backend\Resolvers\AuthorsResolver;
 use Backend\Types\AuthorType;
+use Neuedev\Apineu\Action\Action;
+use Neuedev\Apineu\Action\ActionBag;
+use Neuedev\Apineu\Action\ActionParams;
+use Neuedev\Apineu\Api\ApiRequest;
+use Neuedev\Apineu\Field\Fields\IdAttribute;
+use Neuedev\Apineu\Filter\FilterBag;
+use Neuedev\Apineu\Filter\Filters\KeywordFilter;
+use Neuedev\Apineu\Filter\Filters\OrderFilter;
+use Neuedev\Apineu\Filter\Filters\PageFilter;
+use Neuedev\Apineu\Filter\Filters\PageSizeFilter;
+use Neuedev\Apineu\Filter\Filters\SelectFilter;
+use Neuedev\Apineu\Resource\Resource;
+use Neuedev\Apineu\Type\Type;
 
 class AuthorResource extends Resource
 {

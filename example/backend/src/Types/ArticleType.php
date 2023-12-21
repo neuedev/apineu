@@ -2,19 +2,19 @@
 
 namespace Backend\Types;
 
-use Afeefa\ApiResources\Api\ApiRequest;
-use Afeefa\ApiResources\Field\Attribute;
-use Afeefa\ApiResources\Field\FieldBag;
-use Afeefa\ApiResources\Field\Fields\DateAttribute;
-use Afeefa\ApiResources\Field\Fields\StringAttribute;
-use Afeefa\ApiResources\Field\Relation;
-use Afeefa\ApiResources\Type\Type;
-use Afeefa\ApiResources\Validator\Validators\LinkOneValidator;
-use Afeefa\ApiResources\Validator\Validators\StringValidator;
 use Backend\Resolvers\AuthorsResolver;
 use Backend\Resolvers\CommentsResolver;
 use Backend\Resolvers\TagsResolver;
 use Backend\Resources\AuthorResource;
+use Neuedev\Apineu\Api\ApiRequest;
+use Neuedev\Apineu\Field\Attribute;
+use Neuedev\Apineu\Field\FieldBag;
+use Neuedev\Apineu\Field\Fields\DateAttribute;
+use Neuedev\Apineu\Field\Fields\StringAttribute;
+use Neuedev\Apineu\Field\Relation;
+use Neuedev\Apineu\Type\Type;
+use Neuedev\Apineu\Validator\Validators\LinkOneValidator;
+use Neuedev\Apineu\Validator\Validators\StringValidator;
 
 class ArticleType extends Type
 {

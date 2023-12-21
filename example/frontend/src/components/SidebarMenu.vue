@@ -6,7 +6,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 import AppSidebarMenu from '@a-admin/components/SidebarMenu'
 import ModelCount from '@a-admin/components/model/ModelCount'
-import { apiResources } from '@afeefa/api-resources-client'
+import { apiResources } from '@neuedev/apineu-client'
 import { mdiAccount, mdiFileDocumentOutline } from '@mdi/js'
 
 @Component({

@@ -2,11 +2,11 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../../api-resources-server"
+            "url": "../../apineu-server"
         }
     ],
     "require": {
-        "afeefa/api-resources-server": "*",
+        "neuedev/apineu-server": "*",
         "afeefa/debug-dump-log": "^0",
         "slim/slim": "^4.9",
         "slim/psr7": "^1.5",

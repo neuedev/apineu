@@ -2,10 +2,10 @@
 
 namespace Backend\Types;
 
-use Afeefa\ApiResources\Field\FieldBag;
-use Afeefa\ApiResources\Field\Fields\DateAttribute;
-use Afeefa\ApiResources\Field\Fields\StringAttribute;
-use Afeefa\ApiResources\Type\Type;
+use Neuedev\Apineu\Field\FieldBag;
+use Neuedev\Apineu\Field\Fields\DateAttribute;
+use Neuedev\Apineu\Field\Fields\StringAttribute;
+use Neuedev\Apineu\Type\Type;
 
 class CommentType extends Type
 {

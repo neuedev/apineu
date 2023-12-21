@@ -2,13 +2,13 @@
 
 namespace Backend\Api;
 
-use Afeefa\ApiResources\Api\Api;
-use Afeefa\ApiResources\Resource\ResourceBag;
 use Backend\Resources\AppResource;
 use Backend\Resources\ArticleResource;
 use Backend\Resources\AuthorResource;
 use Backend\Resources\TagResource;
 use Backend\Types\AuthorType;
+use Neuedev\Apineu\Api\Api;
+use Neuedev\Apineu\Resource\ResourceBag;
 
 class BackendApi extends Api
 {

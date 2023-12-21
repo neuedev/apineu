@@ -2,14 +2,14 @@
 
 namespace Backend\Resources;
 
-use Afeefa\ApiResources\Action\Action;
-use Afeefa\ApiResources\Action\ActionBag;
-use Afeefa\ApiResources\Filter\FilterBag;
-use Afeefa\ApiResources\Filter\Filters\KeywordFilter;
-use Afeefa\ApiResources\Resource\Resource;
-use Afeefa\ApiResources\Type\Type;
 use Backend\Models\Author;
 use Backend\Models\Comment;
+use Neuedev\Apineu\Action\Action;
+use Neuedev\Apineu\Action\ActionBag;
+use Neuedev\Apineu\Filter\FilterBag;
+use Neuedev\Apineu\Filter\Filters\KeywordFilter;
+use Neuedev\Apineu\Resource\Resource;
+use Neuedev\Apineu\Type\Type;
 
 class SearchResource extends Resource
 {

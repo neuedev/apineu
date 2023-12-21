@@ -2,15 +2,15 @@
 
 namespace Backend\Resources;
 
-use Afeefa\ApiResources\Action\Action;
-use Afeefa\ApiResources\Action\ActionBag;
-use Afeefa\ApiResources\Api\ApiRequest;
-use Afeefa\ApiResources\Model\Model;
-use Afeefa\ApiResources\Resolver\QueryActionResolver;
-use Afeefa\ApiResources\Resource\Resource;
 use Backend\Types\CountsType;
 use Closure;
 use Medoo\Medoo;
+use Neuedev\Apineu\Action\Action;
+use Neuedev\Apineu\Action\ActionBag;
+use Neuedev\Apineu\Api\ApiRequest;
+use Neuedev\Apineu\Model\Model;
+use Neuedev\Apineu\Resolver\QueryActionResolver;
+use Neuedev\Apineu\Resource\Resource;
 
 class AppResource extends Resource
 {

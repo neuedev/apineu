@@ -3,10 +3,10 @@ version: '3'
 services:
 
   nginx:
-    container_name: api-resources-nginx
+    container_name: apineu-nginx
     image: nginx
     volumes:
-      - ../..:/api-resources
+      - ../..:/apineu
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
       - "8080:80"
@@ -15,39 +15,39 @@ services:
       - nginx-frontproxy
 
   php:
-    container_name: api-resources-php
-    hostname: api-resources-server
+    container_name: apineu-php
+    hostname: apineu-server
     build: ./php
-    image: api-resources/php
-    working_dir: /api-resources/example/backend
+    image: apineu/php
+    working_dir: /apineu/example/backend
     volumes:
-      - ../..:/api-resources
+      - ../..:/apineu
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
   ts:
-    container_name: api-resources-ts
-    hostname: api-resources-ts
-    image: api-resources/node
+    container_name: apineu-ts
+    hostname: apineu-ts
+    image: apineu/node
     working_dir: /client
     volumes:
-      - ../../api-resources-client:/client
+      - ../../apineu-client:/client
     command: "npm run dev"
 
   vue:
-    container_name: api-resources-vue
-    hostname: api-resources-client
+    container_name: apineu-vue
+    hostname: apineu-client
     build: ./node
-    image: api-resources/node
-    working_dir: /api-resources/example/frontend
+    image: apineu/node
+    working_dir: /apineu/example/frontend
     volumes:
-      - ../..:/api-resources
+      - ../..:/apineu
 
   mysql:
-    container_name: api-resources-mysql
+    container_name: apineu-mysql
     image: mariadb
     volumes:
-      - api-resources-mysql:/var/lib/mysql
+      - apineu-mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: api
@@ -60,5 +60,5 @@ networks:
     external: true
 
 volumes:
-  api-resources-mysql:
+  apineu-mysql:
     driver: local

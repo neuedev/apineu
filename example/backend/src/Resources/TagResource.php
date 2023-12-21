@@ -2,12 +2,12 @@
 
 namespace Backend\Resources;
 
-use Afeefa\ApiResources\Action\Action;
-use Afeefa\ApiResources\Action\ActionBag;
-use Afeefa\ApiResources\Resource\Resource;
-use Afeefa\ApiResources\Type\Type;
 use Backend\Resolvers\TagsResolver;
 use Backend\Types\TagType;
+use Neuedev\Apineu\Action\Action;
+use Neuedev\Apineu\Action\ActionBag;
+use Neuedev\Apineu\Resource\Resource;
+use Neuedev\Apineu\Type\Type;
 
 class TagResource extends Resource
 {

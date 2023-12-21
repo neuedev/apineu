@@ -1,12 +1,12 @@
 <?php
 
-use Afeefa\ApiResources\Api\ApiRequest;
-use Afeefa\ApiResources\DI\Container;
-use Afeefa\ApiResources\Type\TypeClassMap;
 use Backend\Api\BackendApi;
 use Backend\Resources\ArticleResource;
 use Backend\Resources\AuthorResource;
 use Medoo\Medoo;
+use Neuedev\Apineu\Api\ApiRequest;
+use Neuedev\Apineu\DI\Container;
+use Neuedev\Apineu\Type\TypeClassMap;
 use Slim\Factory\AppFactory;
 use Slim\Http\Response;
 use Slim\Http\ServerRequest;

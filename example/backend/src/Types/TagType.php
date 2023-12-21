@@ -2,11 +2,11 @@
 
 namespace Backend\Types;
 
-use Afeefa\ApiResources\Field\FieldBag;
-use Afeefa\ApiResources\Field\Fields\StringAttribute;
-use Afeefa\ApiResources\Field\Relation;
-use Afeefa\ApiResources\Type\Type;
 use Backend\Resolvers\TagsResolver;
+use Neuedev\Apineu\Field\FieldBag;
+use Neuedev\Apineu\Field\Fields\StringAttribute;
+use Neuedev\Apineu\Field\Relation;
+use Neuedev\Apineu\Type\Type;
 
 class TagType extends Type
 {
